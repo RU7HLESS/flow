@@ -1,0 +1,5100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fulbari | Say It Better With Flowers</title>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    color:#333;
+    background:#fff;
+    line-height:1.5;
+    overflow-x:hidden;
+}
+
+body.modal-open{
+    overflow:hidden;
+}
+
+button,
+input,
+textarea{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+
+/* =========================================================
+   COLORS
+========================================================= */
+
+:root{
+    --pink:#df6684;
+    --pink-dark:#c94b6c;
+    --pink-light:#fff3f6;
+
+    --green:#294c43;
+    --green-dark:#1c3932;
+
+    --cream:#fffaf7;
+
+    --text:#333;
+    --muted:#777;
+
+    --border:#eadfe2;
+
+    --shadow:0 15px 40px rgba(45,35,38,.08);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+    height:76px;
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:rgba(255,255,255,.94);
+
+    backdrop-filter:blur(14px);
+
+    border-bottom:1px solid rgba(0,0,0,.05);
+}
+
+
+/* LOGO */
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    cursor:pointer;
+}
+
+.logo-icon{
+    font-size:28px;
+}
+
+.logo h2{
+    font-family:Georgia,serif;
+
+    color:var(--green);
+
+    line-height:1;
+}
+
+.logo small{
+    display:block;
+
+    color:#999;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    margin-top:4px;
+}
+
+
+/* NAV */
+
+nav{
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    position:relative;
+
+    padding:8px 0;
+
+    font-size:14px;
+
+    transition:.25s;
+}
+
+nav a::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:0;
+    height:2px;
+
+    background:var(--pink);
+
+    transition:.25s;
+}
+
+nav a:hover,
+nav a.active{
+    color:var(--pink);
+}
+
+nav a:hover::after,
+nav a.active::after{
+    width:100%;
+}
+
+
+/* HEADER BUTTONS */
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.icon-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:transparent;
+
+    font-size:18px;
+
+    position:relative;
+
+    transition:.2s;
+}
+
+.icon-btn:hover{
+    background:var(--pink-light);
+
+    transform:translateY(-2px);
+}
+
+.cart-count{
+    position:absolute;
+
+    top:-2px;
+    right:-2px;
+
+    width:17px;
+    height:17px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:var(--pink);
+
+    color:white;
+
+    border-radius:50%;
+
+    font-size:9px;
+
+    font-weight:bold;
+}
+
+
+/* =========================================================
+   TOP MESSAGE
+========================================================= */
+
+.top-message{
+    padding:10px;
+
+    text-align:center;
+
+    background:var(--green);
+
+    color:white;
+
+    font-size:12px;
+
+    letter-spacing:.5px;
+}
+
+.top-message strong{
+    font-size:13px;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-area{
+    display:none;
+
+    padding:14px 6%;
+
+    background:var(--pink-light);
+}
+
+.search-area.show{
+    display:block;
+
+    animation:slideDown .25s ease;
+}
+
+.search-box{
+    max-width:650px;
+
+    margin:auto;
+
+    display:flex;
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:40px;
+
+    overflow:hidden;
+}
+
+.search-box input{
+    flex:1;
+
+    border:0;
+    outline:0;
+
+    padding:13px 18px;
+
+    font-size:14px;
+}
+
+.search-box button{
+    border:0;
+
+    padding:0 22px;
+
+    background:var(--pink);
+
+    color:white;
+
+    font-weight:bold;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:640px;
+
+    padding:60px 7%;
+
+    display:flex;
+    align-items:center;
+
+    gap:40px;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            #f5d6df,
+            transparent 28%
+        ),
+        linear-gradient(
+            120deg,
+            #fffaf7,
+            #faeef1
+        );
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+    height:350px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(223,102,132,.15);
+
+    right:-120px;
+    bottom:-120px;
+}
+
+
+/* HERO TEXT */
+
+.hero-text{
+    width:50%;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.eyebrow{
+    color:var(--pink);
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    letter-spacing:4px;
+
+    animation:fadeUp .8s ease;
+}
+
+
+/*
+   MAIN BRAND TEXT
+*/
+
+.hero-title{
+    margin:18px 0;
+
+    font-family:Georgia,
+        "Times New Roman",
+        serif;
+
+    color:var(--green);
+
+    font-size:clamp(
+        48px,
+        6vw,
+        76px
+    );
+
+    line-height:1.02;
+
+    letter-spacing:-2px;
+
+    font-weight:700;
+
+    animation:fadeUp .8s .1s ease both;
+}
+
+.hero-title span{
+    color:var(--pink);
+
+    font-style:italic;
+
+    font-weight:500;
+
+    letter-spacing:-1px;
+}
+
+.hero-description{
+    max-width:500px;
+
+    color:var(--muted);
+
+    line-height:1.9;
+
+    margin-bottom:28px;
+
+    animation:fadeUp .8s .2s ease both;
+}
+
+.hero-buttons{
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    animation:fadeUp .8s .3s ease both;
+}
+
+
+/* BUTTONS */
+
+.primary-btn,
+.secondary-btn{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:13px 24px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    transition:.25s;
+}
+
+.primary-btn{
+    color:white;
+
+    background:var(--pink);
+
+    box-shadow:
+        0 8px 20px
+        rgba(223,102,132,.22);
+}
+
+.primary-btn:hover{
+    background:var(--pink-dark);
+
+    transform:translateY(-3px);
+}
+
+.secondary-btn{
+    color:var(--green);
+
+    border:1px solid var(--green);
+
+    background:white;
+}
+
+.secondary-btn:hover{
+    color:white;
+
+    background:var(--green);
+
+    transform:translateY(-3px);
+}
+
+
+/* HERO IMAGE */
+
+.hero-art{
+    width:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+
+    z-index:2;
+
+    animation:heroImage .9s .1s ease both;
+}
+
+.hero-image-wrap{
+    width:min(520px,100%);
+
+    height:470px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+}
+
+.hero-image-wrap::before{
+    content:"";
+
+    position:absolute;
+
+    width:360px;
+    height:360px;
+
+    border-radius:50%;
+
+    background:#f5dce4;
+
+    opacity:.65;
+
+    animation:pulse 5s ease-in-out infinite;
+}
+
+.hero-image{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    position:relative;
+
+    z-index:2;
+
+    filter:
+        drop-shadow(
+            0 25px 25px
+            rgba(70,30,40,.14)
+        );
+
+    transition:.4s;
+}
+
+.hero-image:hover{
+    transform:scale(1.04);
+}
+
+
+/* HERO BADGE */
+
+.hero-badge{
+    position:absolute;
+
+    right:0;
+    bottom:40px;
+
+    z-index:5;
+
+    background:white;
+
+    padding:13px 17px;
+
+    border-radius:12px;
+
+    box-shadow:var(--shadow);
+
+    animation:float 4s ease-in-out infinite;
+}
+
+.hero-badge strong{
+    display:block;
+
+    color:var(--green);
+
+    font-family:Georgia,serif;
+}
+
+.hero-badge small{
+    color:#888;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   BENEFITS
+========================================================= */
+
+.benefits{
+    display:flex;
+
+    justify-content:center;
+
+    gap:70px;
+
+    padding:25px 5%;
+
+    border-bottom:1px solid #eee;
+}
+
+.benefit{
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+}
+
+.benefit-icon{
+    font-size:22px;
+}
+
+.benefit strong,
+.benefit small{
+    display:block;
+}
+
+.benefit small{
+    color:#888;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
+
+.section{
+    padding:80px 6%;
+}
+
+.section-title{
+    text-align:center;
+
+    margin-bottom:42px;
+}
+
+.section-title small{
+    color:var(--pink);
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    letter-spacing:3px;
+}
+
+.section-title h2{
+    margin-top:8px;
+
+    color:var(--green);
+
+    font-family:Georgia,serif;
+
+    font-size:38px;
+}
+
+.section-title p{
+    max-width:550px;
+
+    margin:10px auto 0;
+
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+
+/* =========================================================
+   OCCASIONS
+========================================================= */
+
+.occasions-section{
+    background:white;
+}
+
+.occasion-grid{
+    max-width:950px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:18px;
+}
+
+.occasion{
+    border:1px solid #eee1e5;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    background:white;
+
+    padding:0;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.035);
+
+    transition:.3s;
+}
+
+.occasion:hover{
+    transform:translateY(-7px);
+
+    box-shadow:
+        0 15px 30px
+        rgba(223,102,132,.13);
+
+    border-color:#edb1c0;
+}
+
+.occasion-image{
+    height:180px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff5f7,
+            #fffaf8
+        );
+
+    overflow:hidden;
+}
+
+.occasion img{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    padding:10px;
+
+    transition:.4s;
+}
+
+.occasion:hover img{
+    transform:scale(1.07);
+}
+
+.occasion-name{
+    padding:13px 5px;
+
+    color:var(--green);
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    text-align:center;
+}
+
+
+/* =========================================================
+   FLOWER COLLECTION
+========================================================= */
+
+.products-section{
+    background:var(--pink-light);
+}
+
+.products{
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:20px;
+}
+
+.product{
+    position:relative;
+
+    background:white;
+
+    padding:9px;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    transition:.3s;
+}
+
+.product:hover{
+    transform:translateY(-6px);
+
+    box-shadow:var(--shadow);
+}
+
+.product-image-wrap{
+    height:230px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff8fa,
+            #fffdfb
+        );
+
+    border-radius:11px;
+
+    overflow:hidden;
+}
+
+.product-image{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    padding:5px;
+
+    transition:.4s;
+}
+
+.product:hover .product-image{
+    transform:scale(1.04);
+}
+
+.discount{
+    position:absolute;
+
+    top:17px;
+    left:17px;
+
+    z-index:4;
+
+    padding:4px 8px;
+
+    background:var(--pink);
+
+    color:white;
+
+    border-radius:5px;
+
+    font-size:9px;
+}
+
+.wishlist{
+    position:absolute;
+
+    top:15px;
+    right:15px;
+
+    z-index:5;
+
+    width:34px;
+    height:34px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 3px 12px
+        rgba(0,0,0,.1);
+
+    font-size:17px;
+}
+
+.wishlist.liked{
+    color:var(--pink);
+}
+
+.product-info{
+    padding:12px 4px 5px;
+}
+
+.product-info h3{
+    color:#333;
+
+    font-family:Georgia,serif;
+
+    font-size:17px;
+}
+
+.product-info p{
+    color:#888;
+
+    font-size:11px;
+
+    margin-top:3px;
+}
+
+.price{
+    color:var(--green);
+
+    font-weight:bold;
+
+    font-size:14px;
+
+    margin-top:7px;
+}
+
+.old-price{
+    color:#aaa;
+
+    text-decoration:line-through;
+
+    font-size:11px;
+
+    font-weight:normal;
+
+    margin-left:4px;
+}
+
+.rating{
+    color:#efa62a;
+
+    font-size:10px;
+
+    margin-top:3px;
+}
+
+.product-actions{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:6px;
+
+    margin-top:11px;
+}
+
+.add-btn,
+.buy-btn{
+    padding:9px 4px;
+
+    border:0;
+
+    border-radius:6px;
+
+    font-size:10px;
+
+    transition:.2s;
+}
+
+.add-btn{
+    color:white;
+
+    background:var(--pink);
+}
+
+.buy-btn{
+    color:white;
+
+    background:var(--green);
+}
+
+.add-btn:hover,
+.buy-btn:hover{
+    transform:translateY(-2px);
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about{
+    background:var(--cream);
+}
+
+.about-content{
+    max-width:850px;
+
+    margin:auto;
+
+    text-align:center;
+}
+
+.about-intro{
+    max-width:650px;
+
+    margin:0 auto 35px;
+
+    color:#777;
+
+    line-height:1.9;
+
+    font-size:14px;
+}
+
+.about-features{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+
+    margin-bottom:32px;
+}
+
+.about-feature{
+    padding:25px 18px;
+
+    background:white;
+
+    border-radius:14px;
+
+    box-shadow:
+        0 6px 20px
+        rgba(0,0,0,.04);
+
+    transition:.25s;
+}
+
+.about-feature:hover{
+    transform:translateY(-5px);
+}
+
+.about-feature span{
+    font-size:28px;
+}
+
+.about-feature h3{
+    color:var(--green);
+
+    font-family:Georgia,serif;
+
+    margin:6px 0;
+}
+
+.about-feature p{
+    color:#777;
+
+    font-size:12px;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact{
+    background:var(--pink-light);
+}
+
+.contact-grid{
+    max-width:900px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:25px;
+}
+
+.contact-card{
+    padding:28px;
+
+    background:white;
+
+    border-radius:14px;
+
+    box-shadow:
+        0 7px 25px
+        rgba(0,0,0,.04);
+}
+
+.contact-card h3{
+    color:var(--green);
+
+    font-family:Georgia,serif;
+
+    margin-bottom:15px;
+}
+
+.contact-card p{
+    color:#777;
+
+    font-size:13px;
+
+    margin:9px 0;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+
+    padding:12px;
+
+    margin-bottom:11px;
+
+    border:1px solid #ddd;
+
+    border-radius:7px;
+
+    outline:0;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+    border-color:var(--pink);
+}
+
+.contact-form textarea{
+    height:110px;
+
+    resize:vertical;
+}
+
+.contact-form button{
+    padding:11px 22px;
+
+    border:0;
+
+    border-radius:7px;
+
+    background:var(--pink);
+
+    color:white;
+
+    font-weight:bold;
+}
+
+
+/* =========================================================
+   OCCASION PAGE
+========================================================= */
+
+#occasionPage{
+    display:none;
+
+    min-height:80vh;
+
+    background:white;
+}
+
+.occasion-page-header{
+    padding:65px 5% 45px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            120deg,
+            #fffaf7,
+            #fff1f5
+        );
+}
+
+.occasion-page-header small{
+    color:var(--pink);
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    letter-spacing:3px;
+}
+
+.occasion-page-header h1{
+    margin:10px 0;
+
+    color:var(--green);
+
+    font-family:Georgia,serif;
+
+    font-size:48px;
+}
+
+.occasion-page-header p{
+    max-width:600px;
+
+    margin:auto;
+
+    color:#777;
+
+    font-size:14px;
+}
+
+.back-home{
+    margin-top:23px;
+
+    padding:10px 20px;
+
+    border:1px solid var(--pink);
+
+    border-radius:25px;
+
+    background:white;
+
+    color:var(--pink);
+
+    transition:.2s;
+}
+
+.back-home:hover{
+    color:white;
+
+    background:var(--pink);
+}
+
+.occasion-products-section{
+    padding:55px 6% 80px;
+}
+
+.occasion-products{
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:20px;
+}
+
+.no-results{
+    display:none;
+
+    text-align:center;
+
+    padding:60px;
+
+    color:#777;
+}
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+.cart-overlay{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:1500;
+
+    background:rgba(0,0,0,.4);
+}
+
+.cart-overlay.show{
+    display:block;
+}
+
+.cart-drawer{
+    position:fixed;
+
+    top:0;
+    right:-430px;
+
+    width:min(430px,100%);
+
+    height:100%;
+
+    z-index:1501;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:white;
+
+    transition:.35s ease;
+}
+
+.cart-drawer.show{
+    right:0;
+}
+
+.cart-head{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px;
+
+    border-bottom:1px solid #eee;
+}
+
+.cart-head h2{
+    color:var(--green);
+
+    font-family:Georgia,serif;
+}
+
+.close-btn{
+    border:0;
+
+    background:none;
+
+    font-size:25px;
+}
+
+.cart-items{
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:15px;
+}
+
+.cart-item{
+    display:flex;
+
+    gap:12px;
+
+    padding:13px 0;
+
+    border-bottom:1px solid #eee;
+}
+
+.cart-item-image{
+    width:70px;
+    height:70px;
+
+    flex-shrink:0;
+
+    border-radius:8px;
+
+    background:#fff5f7;
+
+    overflow:hidden;
+}
+
+.cart-item-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+}
+
+.cart-item-info{
+    flex:1;
+}
+
+.cart-item-info strong{
+    display:block;
+
+    color:#333;
+
+    font-family:Georgia,serif;
+}
+
+.cart-item-info small{
+    color:#888;
+
+    font-size:11px;
+}
+
+.qty{
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    margin-top:6px;
+}
+
+.qty button{
+    width:25px;
+    height:25px;
+
+    border:1px solid #ddd;
+
+    background:white;
+
+    border-radius:4px;
+}
+
+.qty .remove{
+    width:auto;
+
+    border:0;
+
+    color:#d44;
+
+    background:none;
+}
+
+.cart-bottom{
+    padding:20px;
+
+    border-top:1px solid #eee;
+}
+
+.cart-total{
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:13px;
+
+    font-weight:bold;
+
+    font-size:18px;
+}
+
+.checkout{
+    width:100%;
+
+    padding:13px;
+
+    border:0;
+
+    border-radius:7px;
+
+    color:white;
+
+    background:var(--pink);
+
+    font-weight:bold;
+}
+
+.continue-shopping{
+    width:100%;
+
+    padding:11px;
+
+    margin-top:8px;
+
+    border:1px solid #ddd;
+
+    border-radius:7px;
+
+    background:white;
+}
+
+
+/* =========================================================
+   LOGIN MODAL
+========================================================= */
+
+.modal-bg{
+    position:fixed;
+
+    inset:0;
+
+    z-index:2000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.5);
+}
+
+.modal-bg.show{
+    display:flex;
+}
+
+.modal{
+    width:min(400px,100%);
+
+    padding:28px;
+
+    border-radius:14px;
+
+    background:white;
+
+    position:relative;
+
+    animation:modalIn .25s ease;
+}
+
+.modal h2{
+    color:var(--green);
+
+    font-family:Georgia,serif;
+}
+
+.modal-description{
+    color:#777;
+
+    font-size:12px;
+
+    margin:6px 0 20px;
+}
+
+.modal-close{
+    position:absolute;
+
+    top:12px;
+    right:17px;
+
+    border:0;
+
+    background:none;
+
+    font-size:24px;
+}
+
+.form-group{
+    margin-bottom:14px;
+}
+
+.form-group label{
+    display:block;
+
+    margin-bottom:5px;
+
+    font-size:12px;
+
+    font-weight:bold;
+}
+
+.form-group input{
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #ddd;
+
+    border-radius:6px;
+
+    outline:0;
+}
+
+.login-btn{
+    width:100%;
+
+    padding:12px;
+
+    border:0;
+
+    border-radius:6px;
+
+    color:white;
+
+    background:var(--pink);
+}
+
+.error{
+    display:none;
+
+    margin-bottom:10px;
+
+    padding:9px;
+
+    border-radius:5px;
+
+    color:#c33;
+
+    background:#fff0f0;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   NOTIFICATION
+========================================================= */
+
+.notification{
+    position:fixed;
+
+    right:20px;
+    bottom:20px;
+
+    z-index:3000;
+
+    max-width:330px;
+
+    padding:13px 18px;
+
+    border-radius:8px;
+
+    color:white;
+
+    background:var(--green);
+
+    opacity:0;
+
+    transform:translateY(80px);
+
+    transition:.3s;
+}
+
+.notification.show{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:50px 7% 20px;
+
+    background:#f8f7f4;
+}
+
+.footer-grid{
+    display:grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr 1fr;
+
+    gap:35px;
+
+    margin-bottom:30px;
+}
+
+footer h3{
+    color:var(--green);
+
+    font-family:Georgia,serif;
+
+    margin-bottom:10px;
+}
+
+footer p,
+footer a{
+    color:#777;
+
+    font-size:12px;
+
+    line-height:2;
+}
+
+footer a{
+    display:block;
+}
+
+footer a:hover{
+    color:var(--pink);
+}
+
+.copyright{
+    padding-top:17px;
+
+    border-top:1px solid #ddd;
+
+    text-align:center;
+
+    color:#999;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   FLOATING HOME
+========================================================= */
+
+.home-floating{
+    display:none;
+
+    position:fixed;
+
+    right:18px;
+    bottom:70px;
+
+    width:43px;
+    height:43px;
+
+    z-index:900;
+
+    border:0;
+
+    border-radius:50%;
+
+    color:white;
+
+    background:var(--pink);
+
+    font-size:18px;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,.15);
+}
+
+.home-floating.show{
+    display:block;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes heroImage{
+
+    from{
+        opacity:0;
+        transform:translateX(35px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+
+}
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+}
+
+@keyframes pulse{
+
+    0%,100%{
+        transform:scale(1);
+        opacity:.6;
+    }
+
+    50%{
+        transform:scale(1.07);
+        opacity:.4;
+    }
+
+}
+
+@keyframes slideDown{
+
+    from{
+        opacity:0;
+        transform:translateY(-8px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes modalIn{
+
+    from{
+        opacity:0;
+        transform:scale(.95);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(25px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1050px){
+
+    nav{
+        gap:18px;
+    }
+
+    .occasion-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+
+        max-width:650px;
+    }
+
+    .products,
+    .occasion-products{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:800px){
+
+    header{
+        padding:0 20px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .hero{
+        flex-direction:column;
+
+        text-align:center;
+
+        padding:55px 20px 65px;
+    }
+
+    .hero-text,
+    .hero-art{
+        width:100%;
+    }
+
+    .hero-description{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .hero-image-wrap{
+        height:380px;
+    }
+
+    .benefits{
+        display:grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap:18px;
+
+        padding:25px;
+    }
+
+    .about-features{
+        grid-template-columns:1fr;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:550px){
+
+    .top-message{
+        font-size:10px;
+    }
+
+    .logo h2{
+        font-size:19px;
+    }
+
+    .logo small{
+        display:none;
+    }
+
+    .header-right{
+        gap:2px;
+    }
+
+    .hero{
+        min-height:auto;
+    }
+
+    .hero-title{
+        font-size:45px;
+
+        letter-spacing:-1.5px;
+    }
+
+    .hero-image-wrap{
+        height:310px;
+    }
+
+    .hero-image-wrap::before{
+        width:250px;
+        height:250px;
+    }
+
+    .hero-badge{
+        right:0;
+        bottom:5px;
+    }
+
+    .occasion-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .occasion-image{
+        height:150px;
+    }
+
+    .products,
+    .occasion-products{
+        grid-template-columns:1fr;
+    }
+
+    .section{
+        padding:65px 20px;
+    }
+
+    .section-title h2{
+        font-size:31px;
+    }
+
+    .occasion-page-header h1{
+        font-size:38px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+========================================================= */
+
+@media(max-width:380px){
+
+    .occasion-grid{
+        grid-template-columns:1fr;
+    }
+
+    .benefits{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     TOP MESSAGE
+========================================================= -->
+
+<div class="top-message">
+
+    🌸 <strong>Say it better with flowers.</strong>
+    Fresh bouquets for every special moment.
+
+</div>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+    <a
+        href="#home"
+        class="logo"
+        id="logoHome">
+
+        <span class="logo-icon">
+            🌸
+        </span>
+
+        <div>
+
+            <h2>
+                Fulbari
+            </h2>
+
+            <small>
+                FLOWERS FOR EVERY MOMENT
+            </small>
+
+        </div>
+
+    </a>
+
+
+    <nav>
+
+        <a
+            href="#home"
+            class="nav-link active"
+            data-page="home">
+
+            Home
+
+        </a>
+
+
+        <a
+            href="#occasions"
+            class="nav-link"
+            data-page="occasions">
+
+            Occasions
+
+        </a>
+
+
+        <a
+            href="#about"
+            class="nav-link"
+            data-page="about">
+
+            About
+
+        </a>
+
+
+        <a
+            href="#contact"
+            class="nav-link"
+            data-page="contact">
+
+            Contact
+
+        </a>
+
+    </nav>
+
+
+    <div class="header-right">
+
+        <button
+            class="icon-btn"
+            id="searchButton"
+            title="Search">
+
+            🔍
+
+        </button>
+
+
+        <button
+            class="icon-btn"
+            id="userButton"
+            title="Account">
+
+            👤
+
+        </button>
+
+
+        <button
+            class="icon-btn"
+            id="cartButton"
+            title="Cart">
+
+            🛒
+
+            <span
+                class="cart-count"
+                id="cartCount">
+
+                0
+
+            </span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     SEARCH
+========================================================= -->
+
+<div
+    class="search-area"
+    id="searchArea">
+
+    <form
+        class="search-box"
+        id="searchForm">
+
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Search roses, lilies, orchids..."
+            autocomplete="off">
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+</div>
+
+
+<!-- =========================================================
+     HOME PAGE
+========================================================= -->
+
+<main id="homePage">
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section
+    class="hero"
+    id="home">
+
+
+    <div class="hero-text">
+
+        <div class="eyebrow">
+            FRESH FLOWERS • HAPPY MOMENTS
+        </div>
+
+
+        <h1 class="hero-title">
+
+            Say It Better<br>
+
+            <span>
+                With Flowers
+            </span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            Beautiful fresh flowers and handmade
+            bouquets for birthdays, anniversaries,
+            romance, congratulations and every
+            special moment.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="#occasions"
+                class="primary-btn"
+                data-scroll="occasions">
+
+                Explore Occasions →
+
+            </a>
+
+
+            <a
+                href="#about"
+                class="secondary-btn"
+                data-scroll="about">
+
+                Our Story
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-art">
+
+        <div class="hero-image-wrap">
+
+            <img
+                class="hero-image"
+                src="https://i.pinimg.com/736x/ae/b8/18/aeb818d7482f0d88827625e3757b62ff.jpg"
+                alt="Fulbari flower bouquet">
+
+
+            <div class="hero-badge">
+
+                <strong>
+                    Fresh & Handmade
+                </strong>
+
+                <small>
+                    Made with love 🌸
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     BENEFITS
+========================================================= -->
+
+<section class="benefits">
+
+
+    <div class="benefit">
+
+        <span class="benefit-icon">
+            🚚
+        </span>
+
+        <div>
+
+            <strong>
+                Fast Delivery
+            </strong>
+
+            <small>
+                Across Nepal
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div class="benefit">
+
+        <span class="benefit-icon">
+            🌿
+        </span>
+
+        <div>
+
+            <strong>
+                Fresh Flowers
+            </strong>
+
+            <small>
+                Every day
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div class="benefit">
+
+        <span class="benefit-icon">
+            💐
+        </span>
+
+        <div>
+
+            <strong>
+                Handmade
+            </strong>
+
+            <small>
+                Prepared with care
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div class="benefit">
+
+        <span class="benefit-icon">
+            🔒
+        </span>
+
+        <div>
+
+            <strong>
+                Secure Shopping
+            </strong>
+
+            <small>
+                Safe checkout
+            </small>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================================================
+     OCCASIONS
+========================================================= -->
+
+<section
+    class="section occasions-section"
+    id="occasions">
+
+
+    <div class="section-title reveal">
+
+        <small>
+            CHOOSE A MOMENT
+        </small>
+
+        <h2>
+            Flowers for Every Moment
+        </h2>
+
+        <p>
+            Find a bouquet that says exactly what
+            you want to say.
+        </p>
+
+    </div>
+
+
+    <div class="occasion-grid reveal">
+
+
+        <!-- BIRTHDAY -->
+
+        <button
+            class="occasion"
+            data-occasion="Birthday">
+
+            <div class="occasion-image">
+
+                <img
+                    src="https://i.pinimg.com/1200x/dc/f4/82/dcf4825af688ca4669e1fa4b74fca455.jpg"
+                    alt="Birthday flowers">
+
+            </div>
+
+            <div class="occasion-name">
+                Birthday →
+            </div>
+
+        </button>
+
+
+        <!-- ANNIVERSARY -->
+
+        <button
+            class="occasion"
+            data-occasion="Anniversary">
+
+            <div class="occasion-image">
+
+                <img
+                    src="https://i.pinimg.com/1200x/b8/38/94/b83894621372f8b8a7eb3f4e29642c10.jpg"
+                    alt="Anniversary flowers">
+
+            </div>
+
+            <div class="occasion-name">
+                Anniversary →
+            </div>
+
+        </button>
+
+
+        <!-- CONGRATULATIONS -->
+
+        <button
+            class="occasion"
+            data-occasion="Congratulations">
+
+            <div class="occasion-image">
+
+                <img
+                    src="https://i.pinimg.com/1200x/3a/15/7b/3a157beeea0f2263a7f6b12e040aa7ef.jpg"
+                    alt="Congratulations flowers">
+
+            </div>
+
+            <div class="occasion-name">
+                Congratulations →
+            </div>
+
+        </button>
+
+
+        <!-- ROMANCE -->
+
+        <button
+            class="occasion"
+            data-occasion="Romance">
+
+            <div class="occasion-image">
+
+                <img
+                    src="https://i.pinimg.com/1200x/b8/38/94/b83894621372f8b8a7eb3f4e29642c10.jpg"
+                    alt="Romance flowers">
+
+            </div>
+
+            <div class="occasion-name">
+                Romance →
+            </div>
+
+        </button>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FLOWER COLLECTION
+========================================================= -->
+
+<section
+    class="section products-section"
+    id="collection">
+
+
+    <div class="section-title reveal">
+
+        <small>
+            OUR COLLECTION
+        </small>
+
+        <h2>
+            Beautiful Bouquets
+        </h2>
+
+        <p>
+            Handpicked flowers prepared for
+            life's beautiful moments.
+        </p>
+
+    </div>
+
+
+    <div
+        class="products reveal"
+        id="homeProducts">
+    </div>
+
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section
+    class="section about"
+    id="about">
+
+
+    <div class="section-title reveal">
+
+        <small>
+            ABOUT FULBARI
+        </small>
+
+        <h2>
+            Flowers Made With Love
+        </h2>
+
+    </div>
+
+
+    <div class="about-content reveal">
+
+        <p class="about-intro">
+
+            Fulbari was created with one simple idea:
+            sometimes flowers can say what words cannot.
+            We bring beautiful bouquets together with
+            thoughtful design to make your special moments
+            even more memorable.
+
+        </p>
+
+
+        <div class="about-features">
+
+
+            <div class="about-feature">
+
+                <span>
+                    🌹
+                </span>
+
+                <h3>
+                    Fresh Flowers
+                </h3>
+
+                <p>
+                    Carefully selected flowers for
+                    beautiful bouquets.
+                </p>
+
+            </div>
+
+
+            <div class="about-feature">
+
+                <span>
+                    💐
+                </span>
+
+                <h3>
+                    Handmade
+                </h3>
+
+                <p>
+                    Every bouquet is prepared with
+                    care and attention.
+                </p>
+
+            </div>
+
+
+            <div class="about-feature">
+
+                <span>
+                    🚚
+                </span>
+
+                <h3>
+                    Easy Delivery
+                </h3>
+
+                <p>
+                    Making flower gifting simple
+                    and convenient.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <a
+            href="#occasions"
+            class="primary-btn"
+            data-scroll="occasions">
+
+            Find Your Flowers →
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section
+    class="section contact"
+    id="contact">
+
+
+    <div class="section-title reveal">
+
+        <small>
+            GET IN TOUCH
+        </small>
+
+        <h2>
+            Contact Fulbari
+        </h2>
+
+    </div>
+
+
+    <div class="contact-grid reveal">
+
+
+        <div class="contact-card">
+
+            <h3>
+                We'd Love To Hear From You
+            </h3>
+
+            <p>
+                📍 Nepal
+            </p>
+
+            <p>
+                📞 +977 9800000000
+            </p>
+
+            <p>
+                📧 hello@fulbari.com
+            </p>
+
+            <p>
+                🕘 Sunday - Friday: 9 AM - 7 PM
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <h3>
+                Send Us a Message
+            </h3>
+
+
+            <form
+                class="contact-form"
+                id="contactForm">
+
+
+                <input
+                    type="text"
+                    id="contactName"
+                    placeholder="Your Name"
+                    required>
+
+
+                <input
+                    type="email"
+                    id="contactEmail"
+                    placeholder="Your Email"
+                    required>
+
+
+                <textarea
+                    id="contactMessage"
+                    placeholder="Your Message"
+                    required>
+                </textarea>
+
+
+                <button type="submit">
+                    Send Message
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================================================
+     OCCASION PAGE
+========================================================= -->
+
+<section id="occasionPage">
+
+
+    <div class="occasion-page-header">
+
+
+        <small>
+            FULBARI COLLECTION
+        </small>
+
+
+        <h1 id="occasionTitle">
+            Birthday Flowers
+        </h1>
+
+
+        <p id="occasionDescription">
+            Beautiful flowers for your special moment.
+        </p>
+
+
+        <button
+            class="back-home"
+            id="backHome">
+
+            ← Back to Home
+
+        </button>
+
+
+    </div>
+
+
+    <div class="occasion-products-section">
+
+
+        <div
+            class="occasion-products"
+            id="occasionProducts">
+        </div>
+
+
+        <div
+            class="no-results"
+            id="occasionNoResults">
+
+            <h3>
+                No flowers available
+            </h3>
+
+            <p>
+                More flowers will be available soon.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+
+    <div class="footer-grid">
+
+
+        <div>
+
+            <h3>
+                🌸 Fulbari
+            </h3>
+
+            <p>
+                Fresh flowers and beautiful bouquets
+                for life's special moments.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Explore
+            </h3>
+
+            <a
+                href="#home"
+                data-scroll="home">
+
+                Home
+
+            </a>
+
+            <a
+                href="#occasions"
+                data-scroll="occasions">
+
+                Occasions
+
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Fulbari
+            </h3>
+
+            <a
+                href="#about"
+                data-scroll="about">
+
+                About Us
+
+            </a>
+
+            <a
+                href="#contact"
+                data-scroll="contact">
+
+                Contact
+
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Follow Us
+            </h3>
+
+            <a
+                href="#"
+                onclick="
+                    socialMessage('Instagram');
+                    return false;
+                ">
+
+                Instagram
+
+            </a>
+
+
+            <a
+                href="#"
+                onclick="
+                    socialMessage('Facebook');
+                    return false;
+                ">
+
+                Facebook
+
+            </a>
+
+
+            <a
+                href="#"
+                onclick="
+                    socialMessage('TikTok');
+                    return false;
+                ">
+
+                TikTok
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 Fulbari Nepal · All rights reserved.
+
+    </div>
+
+
+</footer>
+
+
+<!-- =========================================================
+     CART
+========================================================= -->
+
+<div
+    class="cart-overlay"
+    id="cartOverlay">
+</div>
+
+
+<div
+    class="cart-drawer"
+    id="cartDrawer">
+
+
+    <div class="cart-head">
+
+        <h2>
+            Your Cart
+        </h2>
+
+        <button
+            class="close-btn"
+            id="closeCart">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <div
+        class="cart-items"
+        id="cartItems">
+    </div>
+
+
+    <div class="cart-bottom">
+
+
+        <div class="cart-total">
+
+            <span>
+                Total
+            </span>
+
+            <span id="cartTotal">
+                NPR 0
+            </span>
+
+        </div>
+
+
+        <button
+            class="checkout"
+            id="checkout">
+
+            💳 Continue to Payment
+
+        </button>
+
+
+        <button
+            class="continue-shopping"
+            id="continueShopping">
+
+            ← Continue Shopping
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     LOGIN
+========================================================= -->
+
+<div
+    class="modal-bg"
+    id="loginModal">
+
+
+    <div class="modal">
+
+
+        <button
+            class="modal-close"
+            id="closeLogin">
+
+            ×
+
+        </button>
+
+
+        <h2>
+            Login to Fulbari
+        </h2>
+
+
+        <p class="modal-description">
+
+            Login is required when adding flowers
+            to your cart.
+
+        </p>
+
+
+        <div
+            class="error"
+            id="loginError">
+        </div>
+
+
+        <form id="loginForm">
+
+
+            <div class="form-group">
+
+                <label>
+                    Gmail Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="example@gmail.com"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="At least 4 characters"
+                    required>
+
+            </div>
+
+
+            <button
+                class="login-btn"
+                type="submit">
+
+                Login
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     NOTIFICATION
+========================================================= -->
+
+<div
+    class="notification"
+    id="notification">
+</div>
+
+
+<!-- =========================================================
+     FLOATING HOME
+========================================================= -->
+
+<button
+    class="home-floating"
+    id="homeFloating"
+    title="Back to Home">
+
+    ⌂
+
+</button>
+
+
+<script>
+
+/* =========================================================
+   PRODUCT DATABASE
+========================================================= */
+
+const products = [
+
+    {
+        id:1,
+        name:"Classic Red Roses",
+        type:"Red Rose Bouquet",
+        occasions:[
+            "Birthday",
+            "Romance",
+            "Anniversary"
+        ],
+        price:4999,
+        oldPrice:null,
+        image:
+        "https://i.pinimg.com/1200x/dc/f4/82/dcf4825af688ca4669e1fa4b74fca455.jpg",
+        rating:5
+    },
+
+
+    {
+        id:2,
+        name:"Blush Elegance",
+        type:"Pink Rose Bouquet",
+        occasions:[
+            "Anniversary",
+            "Romance"
+        ],
+        price:3599,
+        oldPrice:4299,
+        image:
+        "https://i.pinimg.com/1200x/b8/38/94/b83894621372f8b8a7eb3f4e29642c10.jpg",
+        rating:5
+    },
+
+
+    {
+        id:3,
+        name:"Sunshine Delight",
+        type:"Sunflower Bouquet",
+        occasions:[
+            "Birthday"
+        ],
+        price:2999,
+        oldPrice:3499,
+        image:
+        "https://i.pinimg.com/736x/19/ba/58/19ba58ac3214caa5450e582e7a99cb7d.jpg",
+        rating:5
+    },
+
+
+    {
+        id:4,
+        name:"White Lily Dream",
+        type:"White Lily Bouquet",
+        occasions:[
+            "Congratulations"
+        ],
+        price:3299,
+        oldPrice:null,
+        image:
+        "https://i.pinimg.com/1200x/3a/15/7b/3a157beeea0f2263a7f6b12e040aa7ef.jpg",
+        rating:4
+    },
+
+
+    {
+        id:5,
+        name:"Pink Rose Romance",
+        type:"Pink Roses",
+        occasions:[
+            "Romance",
+            "Anniversary"
+        ],
+        price:3999,
+        oldPrice:4699,
+        image:
+        "https://i.pinimg.com/736x/ae/b8/18/aeb818d7482f0d88827625e3757b62ff.jpg",
+        rating:5
+    },
+
+
+    {
+        id:6,
+        name:"Spring Garden",
+        type:"Mixed Seasonal Flowers",
+        occasions:[
+            "Birthday"
+        ],
+        price:2799,
+        oldPrice:null,
+        image:
+        "https://i.pinimg.com/736x/fc/45/f3/fc45f3dd1e73d47af25ed6646e184c48.jpg",
+        rating:4
+    },
+
+
+    {
+        id:7,
+        name:"Royal Orchid",
+        type:"Purple Orchid Bouquet",
+        occasions:[
+            "Congratulations",
+            "Anniversary"
+        ],
+        price:5499,
+        oldPrice:5999,
+        image:
+        "https://i.pinimg.com/1200x/07/3b/21/073b21093497823b41aab9e59ce96778.jpg",
+        rating:5
+    },
+
+
+    {
+        id:8,
+        name:"Lavender Dream",
+        type:"Purple Flower Bouquet",
+        occasions:[
+            "Congratulations",
+            "Romance"
+        ],
+        price:3499,
+        oldPrice:3999,
+        image:
+        "https://i.pinimg.com/736x/ae/8a/40/ae8a402ab885247540563ce78ba548b3.jpg",
+        rating:5
+    }
+
+];
+
+
+/* =========================================================
+   OCCASION INFORMATION
+========================================================= */
+
+const occasionInfo = {
+
+    Birthday:{
+        title:"Birthday Flowers",
+
+        description:
+        "Make their birthday brighter with a beautiful bouquet chosen especially for their special day."
+    },
+
+
+    Anniversary:{
+        title:"Anniversary Flowers",
+
+        description:
+        "Celebrate love, memories and another beautiful year together with elegant flowers."
+    },
+
+
+    Congratulations:{
+        title:"Congratulations Flowers",
+
+        description:
+        "Celebrate achievements, new beginnings and exciting moments with a thoughtful bouquet."
+    },
+
+
+    Romance:{
+        title:"Love & Romance",
+
+        description:
+        "Express love without saying a word with romantic roses and beautiful floral arrangements."
+    }
+
+};
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let cart = [];
+
+let loggedIn = false;
+
+let pendingAction = null;
+
+let notificationTimer;
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const homePage =
+document.getElementById("homePage");
+
+const occasionPage =
+document.getElementById("occasionPage");
+
+const homeProducts =
+document.getElementById("homeProducts");
+
+const occasionProducts =
+document.getElementById("occasionProducts");
+
+const occasionTitle =
+document.getElementById("occasionTitle");
+
+const occasionDescription =
+document.getElementById("occasionDescription");
+
+const occasionNoResults =
+document.getElementById("occasionNoResults");
+
+const cartDrawer =
+document.getElementById("cartDrawer");
+
+const cartOverlay =
+document.getElementById("cartOverlay");
+
+const cartItems =
+document.getElementById("cartItems");
+
+const cartTotal =
+document.getElementById("cartTotal");
+
+const cartCount =
+document.getElementById("cartCount");
+
+const loginModal =
+document.getElementById("loginModal");
+
+const notification =
+document.getElementById("notification");
+
+const searchArea =
+document.getElementById("searchArea");
+
+
+/* =========================================================
+   MONEY
+========================================================= */
+
+function money(value){
+
+    return "NPR " +
+    Number(value)
+    .toLocaleString("en-NP");
+
+}
+
+
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
+
+function productCard(product){
+
+    const discount =
+    product.oldPrice
+    ?
+    Math.round(
+        (
+            (product.oldPrice -
+            product.price)
+            /
+            product.oldPrice
+        ) * 100
+    )
+    :
+    0;
+
+
+    return `
+
+        <article class="product">
+
+            ${
+                discount
+                ?
+                `
+                <div class="discount">
+                    ${discount}% OFF
+                </div>
+                `
+                :
+                ""
+            }
+
+
+            <button
+                class="wishlist"
+                data-wishlist="${product.id}">
+
+                ♡
+
+            </button>
+
+
+            <div class="product-image-wrap">
+
+                <img
+                    class="product-image"
+                    src="${product.image}"
+                    alt="${product.name}"
+                    loading="lazy">
+
+            </div>
+
+
+            <div class="product-info">
+
+                <h3>
+                    ${product.name}
+                </h3>
+
+
+                <p>
+                    ${product.type}
+                </p>
+
+
+                <div class="price">
+
+                    ${money(product.price)}
+
+                    ${
+                        product.oldPrice
+                        ?
+                        `
+                        <span class="old-price">
+                            ${money(product.oldPrice)}
+                        </span>
+                        `
+                        :
+                        ""
+                    }
+
+                </div>
+
+
+                <div class="rating">
+
+                    ${"★".repeat(product.rating)}
+                    ${"☆".repeat(5-product.rating)}
+
+                </div>
+
+
+                <div class="product-actions">
+
+                    <button
+                        class="add-btn"
+                        data-add="${product.id}">
+
+                        🛒 Add
+
+                    </button>
+
+
+                    <button
+                        class="buy-btn"
+                        data-buy="${product.id}">
+
+                        Buy Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+/* =========================================================
+   RENDER PRODUCTS
+========================================================= */
+
+function renderProducts(
+    list,
+    container
+){
+
+    container.innerHTML =
+    list.map(productCard).join("");
+
+    attachProductButtons();
+
+}
+
+
+/* =========================================================
+   PRODUCT BUTTONS
+========================================================= */
+
+function attachProductButtons(){
+
+
+    document
+    .querySelectorAll("[data-add]")
+    .forEach(button => {
+
+        button.onclick = () => {
+
+            const id =
+            Number(button.dataset.add);
+
+            requireLogin(
+                () => addToCart(id)
+            );
+
+        };
+
+    });
+
+
+    document
+    .querySelectorAll("[data-buy]")
+    .forEach(button => {
+
+        button.onclick = () => {
+
+            const id =
+            Number(button.dataset.buy);
+
+            requireLogin(
+                () => buyNow(id)
+            );
+
+        };
+
+    });
+
+
+    document
+    .querySelectorAll("[data-wishlist]")
+    .forEach(button => {
+
+        button.onclick = () => {
+
+            button.classList.toggle(
+                "liked"
+            );
+
+
+            button.innerText =
+            button.classList.contains(
+                "liked"
+            )
+            ?
+            "♥"
+            :
+            "♡";
+
+
+            showNotification(
+                button.classList.contains(
+                    "liked"
+                )
+                ?
+                "❤️ Added to wishlist"
+                :
+                "Removed from wishlist"
+            );
+
+        };
+
+    });
+
+}
+
+
+/* =========================================================
+   OCCASION
+========================================================= */
+
+function openOccasionPage(
+    occasion
+){
+
+    const info =
+    occasionInfo[occasion];
+
+    if(!info)return;
+
+
+    homePage.style.display =
+    "none";
+
+    occasionPage.style.display =
+    "block";
+
+
+    occasionTitle.innerText =
+    info.title;
+
+
+    occasionDescription.innerText =
+    info.description;
+
+
+    const filtered =
+    products.filter(product =>
+        product.occasions.includes(
+            occasion
+        )
+    );
+
+
+    occasionProducts.innerHTML =
+    filtered.map(productCard).join("");
+
+
+    occasionNoResults.style.display =
+    filtered.length
+    ?
+    "none"
+    :
+    "block";
+
+
+    attachProductButtons();
+
+
+    history.pushState(
+        {
+            occasion:occasion
+        },
+        "",
+        "#"
+        +
+        occasion
+        .toLowerCase()
+        .replace(/\s+/g,"-")
+    );
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   OCCASION BUTTONS
+========================================================= */
+
+document
+.querySelectorAll(".occasion")
+.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            openOccasionPage(
+                button.dataset.occasion
+            );
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+function goHome(
+    updateHistory=true
+){
+
+    occasionPage.style.display =
+    "none";
+
+    homePage.style.display =
+    "block";
+
+
+    if(updateHistory){
+
+        history.pushState(
+            {
+                page:"home"
+            },
+            "",
+            "#home"
+        );
+
+    }
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+document
+.getElementById("logoHome")
+.addEventListener(
+    "click",
+    event => {
+
+        event.preventDefault();
+
+        goHome();
+
+    }
+);
+
+
+/* =========================================================
+   BACK HOME
+========================================================= */
+
+document
+.getElementById("backHome")
+.addEventListener(
+    "click",
+    goHome
+);
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+document
+.querySelectorAll(".nav-link")
+.forEach(link => {
+
+    link.addEventListener(
+        "click",
+        event => {
+
+            event.preventDefault();
+
+
+            const page =
+            link.dataset.page;
+
+
+            if(page === "home"){
+
+                goHome();
+
+                return;
+
+            }
+
+
+            if(
+                occasionPage.style.display
+                !==
+                "none"
+            ){
+
+                goHome(false);
+
+            }
+
+
+            setTimeout(() => {
+
+                const target =
+                document.getElementById(
+                    page
+                );
+
+
+                if(target){
+
+                    target.scrollIntoView({
+                        behavior:"smooth"
+                    });
+
+                }
+
+
+                document
+                .querySelectorAll(
+                    ".nav-link"
+                )
+                .forEach(item => {
+
+                    item.classList.remove(
+                        "active"
+                    );
+
+                });
+
+
+                link.classList.add(
+                    "active"
+                );
+
+
+                history.replaceState(
+                    null,
+                    "",
+                    "#" + page
+                );
+
+            },50);
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   INTERNAL LINKS
+========================================================= */
+
+document
+.querySelectorAll("[data-scroll]")
+.forEach(link => {
+
+    link.addEventListener(
+        "click",
+        event => {
+
+            event.preventDefault();
+
+
+            const targetId =
+            link.dataset.scroll;
+
+
+            if(
+                occasionPage.style.display
+                !==
+                "none"
+            ){
+
+                goHome(false);
+
+            }
+
+
+            setTimeout(() => {
+
+                const target =
+                document.getElementById(
+                    targetId
+                );
+
+
+                if(target){
+
+                    target.scrollIntoView({
+                        behavior:"smooth"
+                    });
+
+                }
+
+
+                history.replaceState(
+                    null,
+                    "",
+                    "#" + targetId
+                );
+
+            },50);
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   BROWSER NAVIGATION
+========================================================= */
+
+window.addEventListener(
+    "popstate",
+    loadPageFromHash
+);
+
+
+function loadPageFromHash(){
+
+    const hash =
+    window.location.hash
+    .replace("#","")
+    .toLowerCase();
+
+
+    const occasion =
+    Object.keys(
+        occasionInfo
+    )
+    .find(name =>
+
+        name
+        .toLowerCase()
+        .replace(/\s+/g,"-")
+        ===
+        hash
+
+    );
+
+
+    if(occasion){
+
+        homePage.style.display =
+        "none";
+
+        occasionPage.style.display =
+        "block";
+
+
+        const info =
+        occasionInfo[occasion];
+
+
+        occasionTitle.innerText =
+        info.title;
+
+
+        occasionDescription.innerText =
+        info.description;
+
+
+        const filtered =
+        products.filter(product =>
+            product.occasions.includes(
+                occasion
+            )
+        );
+
+
+        occasionProducts.innerHTML =
+        filtered.map(productCard).join("");
+
+
+        occasionNoResults.style.display =
+        filtered.length
+        ?
+        "none"
+        :
+        "block";
+
+
+        attachProductButtons();
+
+
+        window.scrollTo({
+            top:0,
+            behavior:"instant"
+        });
+
+
+    }else{
+
+        homePage.style.display =
+        "block";
+
+        occasionPage.style.display =
+        "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+function requireLogin(
+    action
+){
+
+    if(loggedIn){
+
+        action();
+
+        return;
+
+    }
+
+
+    pendingAction =
+    action;
+
+
+    loginModal.classList.add(
+        "show"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+}
+
+
+document
+.getElementById("loginForm")
+.addEventListener(
+    "submit",
+    event => {
+
+        event.preventDefault();
+
+
+        const email =
+        document
+        .getElementById("email")
+        .value
+        .trim();
+
+
+        const password =
+        document
+        .getElementById("password")
+        .value;
+
+
+        const error =
+        document.getElementById(
+            "loginError"
+        );
+
+
+        error.style.display =
+        "none";
+
+
+        if(
+            !email
+            .toLowerCase()
+            .endsWith("@gmail.com")
+        ){
+
+            error.innerText =
+            "Please use a Gmail address.";
+
+            error.style.display =
+            "block";
+
+            return;
+
+        }
+
+
+        if(password.length < 4){
+
+            error.innerText =
+            "Password must be at least 4 characters.";
+
+            error.style.display =
+            "block";
+
+            return;
+
+        }
+
+
+        loggedIn =
+        true;
+
+
+        loginModal.classList.remove(
+            "show"
+        );
+
+
+        document.body.classList.remove(
+            "modal-open"
+        );
+
+
+        showNotification(
+            "✅ Welcome to Fulbari!"
+        );
+
+
+        if(pendingAction){
+
+            const action =
+            pendingAction;
+
+            pendingAction =
+            null;
+
+            setTimeout(
+                action,
+                200
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   CLOSE LOGIN
+========================================================= */
+
+function closeLogin(){
+
+    loginModal.classList.remove(
+        "show"
+    );
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+document
+.getElementById("closeLogin")
+.addEventListener(
+    "click",
+    closeLogin
+);
+
+
+loginModal.addEventListener(
+    "click",
+    event => {
+
+        if(
+            event.target === loginModal
+        ){
+
+            closeLogin();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   USER
+========================================================= */
+
+document
+.getElementById("userButton")
+.addEventListener(
+    "click",
+    () => {
+
+        if(loggedIn){
+
+            showNotification(
+                "👤 You are already logged in."
+            );
+
+        }else{
+
+            loginModal.classList.add(
+                "show"
+            );
+
+            document.body.classList.add(
+                "modal-open"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+function addToCart(id){
+
+    const product =
+    products.find(
+        item => item.id === id
+    );
+
+
+    if(!product)return;
+
+
+    const existing =
+    cart.find(
+        item => item.id === id
+    );
+
+
+    if(existing){
+
+        existing.quantity++;
+
+    }else{
+
+        cart.push({
+
+            ...product,
+
+            quantity:1
+
+        });
+
+    }
+
+
+    updateCart();
+
+    openCart();
+
+
+    showNotification(
+        `🌸 ${product.name} added to cart`
+    );
+
+}
+
+
+function buyNow(id){
+
+    const product =
+    products.find(
+        item => item.id === id
+    );
+
+
+    if(!product)return;
+
+
+    cart = [
+
+        {
+            ...product,
+            quantity:1
+        }
+
+    ];
+
+
+    updateCart();
+
+    openCart();
+
+}
+
+
+/* =========================================================
+   UPDATE CART
+========================================================= */
+
+function updateCart(){
+
+    const count =
+    cart.reduce(
+        (sum,item) =>
+        sum + item.quantity,
+        0
+    );
+
+
+    cartCount.innerText =
+    count;
+
+
+    if(cart.length === 0){
+
+        cartItems.innerHTML = `
+
+            <div style="
+                text-align:center;
+                padding:60px 20px;
+                color:#888;
+            ">
+
+                <div style="
+                    font-size:45px;
+                    margin-bottom:10px;
+                ">
+                    🛒
+                </div>
+
+                <h3>
+                    Your cart is empty
+                </h3>
+
+                <p>
+                    Add some beautiful flowers.
+                </p>
+
+            </div>
+
+        `;
+
+
+        cartTotal.innerText =
+        "NPR 0";
+
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+
+    cartItems.innerHTML = "";
+
+
+    cart.forEach(item => {
+
+        total +=
+        item.price *
+        item.quantity;
+
+
+        const div =
+        document.createElement(
+            "div"
+        );
+
+
+        div.className =
+        "cart-item";
+
+
+        div.innerHTML = `
+
+            <div class="cart-item-image">
+
+                <img
+                    src="${item.image}"
+                    alt="${item.name}">
+
+            </div>
+
+
+            <div class="cart-item-info">
+
+                <strong>
+                    ${item.name}
+                </strong>
+
+                <small>
+                    ${money(item.price)}
+                </small>
+
+
+                <div class="qty">
+
+                    <button
+                        data-minus="${item.id}">
+
+                        −
+
+                    </button>
+
+
+                    <span>
+                        ${item.quantity}
+                    </span>
+
+
+                    <button
+                        data-plus="${item.id}">
+
+                        +
+
+                    </button>
+
+
+                    <button
+                        class="remove"
+                        data-remove="${item.id}">
+
+                        Remove
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        cartItems.appendChild(
+            div
+        );
+
+    });
+
+
+    cartTotal.innerText =
+    money(total);
+
+
+    attachCartButtons();
+
+}
+
+
+/* =========================================================
+   CART CONTROLS
+========================================================= */
+
+function attachCartButtons(){
+
+
+    document
+    .querySelectorAll("[data-minus]")
+    .forEach(button => {
+
+        button.onclick = () => {
+
+            const id =
+            Number(
+                button.dataset.minus
+            );
+
+
+            const item =
+            cart.find(
+                x => x.id === id
+            );
+
+
+            if(!item)return;
+
+
+            item.quantity--;
+
+
+            if(item.quantity <= 0){
+
+                cart =
+                cart.filter(
+                    x => x.id !== id
+                );
+
+            }
+
+
+            updateCart();
+
+        };
+
+    });
+
+
+    document
+    .querySelectorAll("[data-plus]")
+    .forEach(button => {
+
+        button.onclick = () => {
+
+            const id =
+            Number(
+                button.dataset.plus
+            );
+
+
+            const item =
+            cart.find(
+                x => x.id === id
+            );
+
+
+            if(item){
+
+                item.quantity++;
+
+                updateCart();
+
+            }
+
+        };
+
+    });
+
+
+    document
+    .querySelectorAll("[data-remove]")
+    .forEach(button => {
+
+        button.onclick = () => {
+
+            const id =
+            Number(
+                button.dataset.remove
+            );
+
+
+            cart =
+            cart.filter(
+                x => x.id !== id
+            );
+
+
+            updateCart();
+
+
+            showNotification(
+                "Item removed from cart."
+            );
+
+        };
+
+    });
+
+}
+
+
+/* =========================================================
+   CART OPEN/CLOSE
+========================================================= */
+
+function openCart(){
+
+    cartDrawer.classList.add(
+        "show"
+    );
+
+    cartOverlay.classList.add(
+        "show"
+    );
+
+}
+
+
+function closeCart(){
+
+    cartDrawer.classList.remove(
+        "show"
+    );
+
+    cartOverlay.classList.remove(
+        "show"
+    );
+
+}
+
+
+document
+.getElementById("cartButton")
+.addEventListener(
+    "click",
+    openCart
+);
+
+
+document
+.getElementById("closeCart")
+.addEventListener(
+    "click",
+    closeCart
+);
+
+
+document
+.getElementById("continueShopping")
+.addEventListener(
+    "click",
+    closeCart
+);
+
+
+cartOverlay.addEventListener(
+    "click",
+    closeCart
+);
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+document
+.getElementById("searchButton")
+.addEventListener(
+    "click",
+    () => {
+
+        searchArea.classList.toggle(
+            "show"
+        );
+
+
+        if(
+            searchArea.classList.contains(
+                "show"
+            )
+        ){
+
+            document
+            .getElementById("searchInput")
+            .focus();
+
+        }
+
+    }
+);
+
+
+document
+.getElementById("searchForm")
+.addEventListener(
+    "submit",
+    event => {
+
+        event.preventDefault();
+
+
+        const query =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+        if(!query){
+
+            showNotification(
+                "Type something to search."
+            );
+
+            return;
+
+        }
+
+
+        goHome(false);
+
+
+        setTimeout(() => {
+
+            const results =
+            products.filter(product => {
+
+                const text = (
+
+                    product.name
+                    +
+                    " "
+                    +
+                    product.type
+                    +
+                    " "
+                    +
+                    product.occasions
+                    .join(" ")
+
+                ).toLowerCase();
+
+
+                return text.includes(
+                    query
+                );
+
+            });
+
+
+            homeProducts.innerHTML =
+            results.length
+            ?
+            results
+            .map(productCard)
+            .join("")
+            :
+            `
+
+                <div style="
+                    grid-column:1/-1;
+                    text-align:center;
+                    padding:60px 20px;
+                    color:#777;
+                ">
+
+                    <div style="
+                        font-size:45px;
+                    ">
+                        🌸
+                    </div>
+
+                    <h3>
+                        No flowers found
+                    </h3>
+
+                    <p>
+                        Try another search.
+                    </p>
+
+                </div>
+
+            `;
+
+
+            attachProductButtons();
+
+
+            document
+            .getElementById("collection")
+            .scrollIntoView({
+                behavior:"smooth"
+            });
+
+
+        },100);
+
+    }
+);
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+document
+.getElementById("contactForm")
+.addEventListener(
+    "submit",
+    event => {
+
+        event.preventDefault();
+
+
+        showNotification(
+            "💌 Thank you! Your message has been received."
+        );
+
+
+        event.target.reset();
+
+    }
+);
+
+
+/* =========================================================
+   ESEWA
+========================================================= */
+
+document
+.getElementById("checkout")
+.addEventListener(
+    "click",
+    async() => {
+
+        if(cart.length === 0){
+
+            showNotification(
+                "🛒 Your cart is empty."
+            );
+
+            return;
+
+        }
+
+
+        const total =
+        cart.reduce(
+            (sum,item) =>
+            sum +
+            item.price *
+            item.quantity,
+            0
+        );
+
+
+        try{
+
+            showNotification(
+                "Connecting to eSewa..."
+            );
+
+
+            const response =
+            await fetch(
+                "/api/esewa/payment",
+                {
+
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                        "application/json"
+                    },
+
+                    body:
+                    JSON.stringify({
+                        amount:total
+                    })
+
+                }
+            );
+
+
+            const data =
+            await response.json();
+
+
+            if(
+                !response.ok ||
+                !data.success
+            ){
+
+                throw new Error(
+                    data.message ||
+                    "Payment failed"
+                );
+
+            }
+
+
+            const form =
+            document.createElement(
+                "form"
+            );
+
+
+            form.method =
+            "POST";
+
+
+            form.action =
+            data.paymentUrl;
+
+
+            Object.entries(
+                data.formData
+            )
+            .forEach(
+                ([name,value]) => {
+
+                    const input =
+                    document.createElement(
+                        "input"
+                    );
+
+
+                    input.type =
+                    "hidden";
+
+
+                    input.name =
+                    name;
+
+
+                    input.value =
+                    value;
+
+
+                    form.appendChild(
+                        input
+                    );
+
+                }
+            );
+
+
+            document.body.appendChild(
+                form
+            );
+
+
+            form.submit();
+
+
+        }catch(error){
+
+            console.error(error);
+
+
+            showNotification(
+                "❌ eSewa backend is not connected yet."
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   SOCIAL
+========================================================= */
+
+function socialMessage(name){
+
+    showNotification(
+        `🌸 Fulbari ${name} page coming soon.`
+    );
+
+}
+
+
+/* =========================================================
+   NOTIFICATION
+========================================================= */
+
+function showNotification(
+    message
+){
+
+    notification.innerText =
+    message;
+
+
+    notification.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        notificationTimer
+    );
+
+
+    notificationTimer =
+    setTimeout(
+        () => {
+
+            notification.classList.remove(
+                "show"
+            );
+
+        },
+        2500
+    );
+
+}
+
+
+/* =========================================================
+   FLOATING HOME
+========================================================= */
+
+const homeFloating =
+document.getElementById(
+    "homeFloating"
+);
+
+
+homeFloating.addEventListener(
+    "click",
+    goHome
+);
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if(
+            window.scrollY > 500
+            &&
+            occasionPage.style.display
+            ===
+            "none"
+        ){
+
+            homeFloating.classList.add(
+                "show"
+            );
+
+        }else{
+
+            homeFloating.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealObserver =
+new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(
+                entry.isIntersecting
+            ){
+
+                entry.target.classList.add(
+                    "visible"
+                );
+
+                revealObserver.unobserve(
+                    entry.target
+                );
+
+            }
+
+        });
+
+    },
+    {
+        threshold:.12
+    }
+);
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(element => {
+
+    revealObserver.observe(
+        element
+    );
+
+});
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+renderProducts(
+    products,
+    homeProducts
+);
+
+updateCart();
+
+loadPageFromHash();
+
+</script>
+
+</body>
+</html>
